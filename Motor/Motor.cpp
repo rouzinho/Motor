@@ -57,7 +57,7 @@ mInput(new cedar::aux::MatData(cv::Mat::zeros(1, 100, CV_32F))),
 mTopic(new cedar::aux::StringParameter(this, "Topic Name", "")),
 mLimb(new cedar::aux::StringParameter(this, "Limb Name", "")),
 mSize(new cedar::aux::IntParameter(this, "Size",100)),
-mEffort(new cedar::aux::DoubleParameter(this,"effort",999.0)),
+mEffort(new cedar::aux::DoubleParameter(this,"effort",0.5)),
 mLower(new cedar::aux::DoubleParameter(this,"lower",-1.0)),
 mUpper(new cedar::aux::DoubleParameter(this,"upper",1.0))
 {
@@ -69,7 +69,7 @@ motorCommand.position.resize(1);
 motorCommand.effort.resize(1);
 motorCommand.velocity.resize(1);
 motorCommand.position[0] = 0;
-motorCommand.effort[0] = 999;
+motorCommand.effort[0] = 0.5;
 motorCommand.velocity[0] = 0;
 size = 100;
 upper = 1;
@@ -93,7 +93,7 @@ this->connect(this->mUpper.get(), SIGNAL(valueChanged()), this, SLOT(reCompute()
 //generic publisher. If limbName is there, a JointCommand will be published. Otherwise it's publishing a Float64 on the topic name.
 void Motor::compute(const cedar::proc::Arguments&)
 {
-   ros::Rate loop_rate(60);
+   //ros::Rate loop_rate(60);
    cv::Mat& sum = mInput->getData();
    cedar::aux::ConstDataPtr op1 = this->getInputSlot("motor")->getData();
    sum = op1->getData<cv::Mat>();
