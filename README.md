@@ -35,11 +35,19 @@ The code was tested on ROS Kinetic Kame and ROS Melodic Morenia
 
 ROS and Cedar are a bit to powerful to run on the same computer (if you have a big DFT model and a complex robot), so I recommend using 2 different computers.
 
+**INSTALL YARP**
+
+This last version of the plugin requires yarp (cedar built with yarp support - you don't have to do$
+
+https://www.yarp.it/install.html
+
+If you don't need it, remove the find_package(YARP REQUIRED) in the cedarProject.cmake
+
 ### Installing
 
 First clone the repository :
 
-`https://github.com/rouzinho/MotorHeadDft.git`
+`https://github.com/rouzinho/Motor.git`
 
 In the project.conf, change the CEDAR_HOME directory to your own :
 
@@ -57,7 +65,7 @@ Finally start the compilation :
 
 `make`
 
-You should see the plugin under the name libEarListener.so in the build/ repository
+You should see the plugin under the name libMotor.so in the build/ repository
 
 ## Before Running the plugin
 
@@ -88,7 +96,7 @@ Work in progress to use Qt elements to control the settings.
 
 ## Authors
 
-Quentin Houbre - Tampere University of Technology
+Quentin Houbre - Tampere University
 
 ## License
 
